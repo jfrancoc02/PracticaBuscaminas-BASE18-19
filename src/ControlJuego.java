@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.ForkJoinPool.ForkJoinWorkerThreadFactory;
 
 /**
  * Clase gestora del tablero de juego.
@@ -35,9 +36,28 @@ public class ControlJuego {
 	 * 			El resto de posiciones que no son minas guardan en el entero cuÃ¡ntas minas hay alrededor de la celda
 	 */
 	public void inicializarPartida(){
-
+		Random rd = new Random();
 		//TODO: Repartir minas e inicializar puntación. Si hubiese un tablero anterior, lo pongo todo a cero para inicializarlo.
 		
+		// Recorro todo el tablero y lo ponto todo a 0
+		for (int i = 0; i < tablero.length; i++) {
+			for (int j = 0; j < tablero[i].length; j++) {
+				tablero[i][j] = 0;
+			}
+		}
+		
+		// Ahora voy recorriendo el número de minas y si en la posicion que nos ha generado aleatoriamente no hay una mina ponemos un -1
+		// Si hay una mina volvemos a ejecutar
+		// Hacerlo con un while
+		for (int i = 0; i < MINAS_INICIALES; i++) {
+			int aleatorioX = rd.nextInt(10);
+			int aleatorioY = rd.nextInt(10);
+			if (tablero[aleatorioX][aleatorioY] != MINA) {
+				tablero[aleatorioX][aleatorioY] = MINA;
+			} else {
+				
+			}
+		}
 		
 		
 		//Al final del método hay que guardar el número de minas para las casillas que no son mina:
@@ -112,6 +132,7 @@ public class ControlJuego {
 	 * @return Un entero con la puntuaciÃ³n actual
 	 */
 	public int getPuntuacion() {
+		return this.puntuacion;
 	}
 	
 }
