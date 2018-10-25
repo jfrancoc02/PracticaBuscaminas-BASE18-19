@@ -40,15 +40,17 @@ public class ControlJuego {
 		//TODO: Repartir minas e inicializar puntación. Si hubiese un tablero anterior, lo pongo todo a cero para inicializarlo.
 		
 		// Recorro todo el tablero y lo ponto todo a 0
-		for (int i = 0; i < tablero.length; i++) {
-			for (int j = 0; j < tablero[i].length; j++) {
-				tablero[i][j] = 0;
+		for (int i = 0; i < tablero.length; i++) { // Recorro el eje de las x
+			for (int j = 0; j < tablero[i].length; j++) { // Recorro el eje de las y
+				tablero[i][j] = 0; // Coloco un 0 en la posición
 			}
 		}
 		
 		// Ahora voy recorriendo el número de minas y si en la posicion que nos ha generado aleatoriamente no hay una mina ponemos un -1
 		// Si hay una mina volvemos a ejecutar
 		// Hacerlo con un while
+		
+		/*
 		for (int i = 0; i < MINAS_INICIALES; i++) {
 			int aleatorioX = rd.nextInt(10);
 			int aleatorioY = rd.nextInt(10);
@@ -56,6 +58,20 @@ public class ControlJuego {
 				tablero[aleatorioX][aleatorioY] = MINA;
 			} else {
 				
+			}
+		}
+		*/
+		
+		// Creo un entero que lo igual a MINAS_INICIALES
+		// Y le digo que mientras numMinas sea mayor a 0 haga siempre esta condicion
+		// Si en la posicion aleatorio no hay un -1 colocamos un -1 si no no hacemos nada
+		int numMinas = MINAS_INICIALES;
+		while(numMinas > 0) {
+			int aleatorioX = rd.nextInt(10);
+			int aleatorioY = rd.nextInt(10);
+			if (tablero[aleatorioX][aleatorioY] != MINA) {
+				tablero[aleatorioX][aleatorioY] = MINA;
+				numMinas--;
 			}
 		}
 		
