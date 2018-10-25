@@ -173,7 +173,7 @@ public class VentanaPrincipal {
 	 * Método que muestra la puntuación por pantalla.
 	 */
 	public void actualizarPuntuacion() {
-		//TODO
+		juego.getPuntuacion();
 	}
 	
 	/**
@@ -201,7 +201,4 @@ public class VentanaPrincipal {
 		inicializarComponentes();	
 		inicializarListeners();		
 	}
-
-
-
 }
