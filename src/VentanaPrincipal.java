@@ -302,6 +302,7 @@ public class VentanaPrincipal {
 		// COMPONENTES.
 		ventana.setVisible(true);
 		inicializarComponentes();
+		// juego.depurarTablero();
 		inicializarListeners();
 	}
 }
