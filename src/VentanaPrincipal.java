@@ -160,18 +160,10 @@ public class VentanaPrincipal {
 	 */
 	public void inicializarListeners() {
 		for (i = 0; i < botonesJuego.length; i++) {
+			int iInt = i;
 			for (j = 0; j < botonesJuego[i].length; j++) {
-				botonesJuego[i][j].addActionListener(new ActionListener() {
-					// Creamos dos enteros y los igualamos
-					int iInt = i;
-					int jInt = j;
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						mostrarNumMinasAlrededor(iInt, jInt);
-						actualizarPuntuacion();
-					}
-				});
+				int jInt = j;
+				botonesJuego[i][j].addActionListener(new ActionBoton(this, iInt, jInt));
 			}
 		}
 		
