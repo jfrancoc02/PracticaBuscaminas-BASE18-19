@@ -2,7 +2,7 @@ import java.awt.EventQueue;
 
 /**
  * Clase principal
- * @author jesusredondogarcia
+ * @author jonathanFrancoClemente
  *
  */
 public class Principal {
@@ -23,5 +23,4 @@ public class Principal {
 			}
 		});
 	}
-
 }

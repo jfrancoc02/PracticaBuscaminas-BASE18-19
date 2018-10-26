@@ -34,6 +34,9 @@ public class VentanaPrincipal {
 	JButton botonEmpezar;
 	JTextField pantallaPuntuacion;
 	
+	int i = 0;
+	int j = 0;
+	
 	
 	//LA VENTANA GUARDA UN CONTROL DE JUEGO:
 	ControlJuego juego;
@@ -139,7 +142,20 @@ public class VentanaPrincipal {
 	 * M√©todo que inicializa todos los l√≠steners que necesita inicialmente el programa
 	 */
 	public void inicializarListeners(){
-		//TODO
+		for (i = 0; i < botonesJuego.length; i++) {
+			for (j = 0; j < botonesJuego[i].length; j++) {
+				botonesJuego[i][j].addActionListener(new ActionListener() {
+					// Creamos dos enteros y los igualamos
+					int iInt = i;
+					int jInt = j;
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						mostrarNumMinasAlrededor(iInt, jInt);
+						
+					}
+				});
+			}
+		}
 	}
 	
 	
@@ -156,7 +172,24 @@ public class VentanaPrincipal {
 	 * @param j: posici√≥n horizontal de la celda.
 	 */
 	public void mostrarNumMinasAlrededor(int i , int j) {
-		//TODO
+		// Label que almacenar· el n˙mero de bombas que tenemos alrededor de una casilla en concreto
+		JLabel texto;
+		// Si cuando abrimos la casilla no es una bomba
+		if(juego.abrirCasilla(i, j) == true) {
+			// Eliminamos el boton
+			panelesJuego[i][j].removeAll();
+			// AÒadimos al texto el n˙mero
+			texto = new JLabel(juego.getMinasAlrededor(i, j) + "");
+			// Lo alineamos al centro
+			texto.setHorizontalAlignment(SwingConstants.CENTER);
+			// Al ser un JLabel ya de por si no puede ser editable
+			// Le asignamos al texto un color dependiendo del numero de minas que tengamos en esa posicion
+			// Este numero ya hace referencia a la posicion de correspondenciaColores
+			texto.setForeground(correspondenciaColores[juego.getMinasAlrededor(i, j)]);
+			panelesJuego[i][j].add(texto);
+			refrescarPantalla();
+		}
+		
 	}
 	
 	
@@ -166,7 +199,16 @@ public class VentanaPrincipal {
 	 * @post : Todos los botones se desactivan excepto el de volver a iniciar el juego.
 	 */
 	public void mostrarFinJuego(boolean porExplosion) {
-		//TODO
+		if (juego.esFinJuego() == true) {
+			porExplosion = false;
+		} else {
+			porExplosion = true;
+		}
+		if (porExplosion == false) {
+			JOptionPane.showMessageDialog(null, "Has ganado.");
+		} else {
+			JOptionPane.showMessageDialog(null, "BOMBA!, Has perdido.");
+		}
 	}
 
 	/**

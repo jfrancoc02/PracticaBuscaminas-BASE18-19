@@ -128,9 +128,8 @@ public class ControlJuego {
 		if (tablero[i][j] != MINA) {
 			puntuacion++;
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 	}
 
 	/**
