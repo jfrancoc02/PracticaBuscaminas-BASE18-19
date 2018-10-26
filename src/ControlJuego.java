@@ -18,7 +18,7 @@ public class ControlJuego {
 	final int LADO_TABLERO = 10;
 
 	private int[][] tablero;
-	private int puntuacion;
+	private int puntuacion = 0;
 
 	public ControlJuego() {
 		// Creamos el tablero:
@@ -184,6 +184,6 @@ public class ControlJuego {
 	 * @return Un entero con la puntuación actual
 	 */
 	public int getPuntuacion() {
-		return this.puntuacion;
+		return puntuacion;
 	}
 }

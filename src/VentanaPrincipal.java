@@ -151,7 +151,7 @@ public class VentanaPrincipal {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						mostrarNumMinasAlrededor(iInt, jInt);
-						
+						actualizarPuntuacion();
 					}
 				});
 			}
@@ -188,6 +188,8 @@ public class VentanaPrincipal {
 			texto.setForeground(correspondenciaColores[juego.getMinasAlrededor(i, j)]);
 			panelesJuego[i][j].add(texto);
 			refrescarPantalla();
+		} else {
+			mostrarFinJuego(true);
 		}
 		
 	}
@@ -199,23 +201,25 @@ public class VentanaPrincipal {
 	 * @post : Todos los botones se desactivan excepto el de volver a iniciar el juego.
 	 */
 	public void mostrarFinJuego(boolean porExplosion) {
-		if (juego.esFinJuego() == true) {
-			porExplosion = false;
+		if (porExplosion == true) {
+			String mensajeExplosion = "BOMBA!!. Has perdido...";
+			JOptionPane.showMessageDialog(null, mensajeExplosion);
 		} else {
-			porExplosion = true;
+			String mensajeGanador = "Has GANADO!!";
+			JOptionPane.showMessageDialog(null, mensajeGanador);
 		}
-		if (porExplosion == false) {
-			JOptionPane.showMessageDialog(null, "Has ganado.");
-		} else {
-			JOptionPane.showMessageDialog(null, "BOMBA!, Has perdido.");
-		}
+		
 	}
 
 	/**
 	 * Método que muestra la puntuación por pantalla.
 	 */
 	public void actualizarPuntuacion() {
-		juego.getPuntuacion();
+		pantallaPuntuacion.setText(juego.getPuntuacion() + "");
+		if (juego.getPuntuacion() == 80) {
+			mostrarFinJuego(false);
+		}
+		
 	}
 	
 	/**
