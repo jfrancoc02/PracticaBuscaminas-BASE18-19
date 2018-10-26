@@ -40,7 +40,10 @@ public class ControlJuego {
 		Random rd = new Random();
 		// TODO: Repartir minas e inicializar puntación. Si hubiese un tablero anterior,
 		// lo pongo todo a cero para inicializarlo.
-
+		
+		// Pongo la puntuación a 0 para que cada vez que vuelva a generar un nuevo buscaminas comience de nuevo la puntuacion
+		puntuacion = 0;
+		
 		// Recorro todo el tablero y lo ponto todo a 0
 		for (int i = 0; i < tablero.length; i++) { // Recorro el eje de las x
 			for (int j = 0; j < tablero[i].length; j++) { // Recorro el eje de las y
@@ -185,9 +188,5 @@ public class ControlJuego {
 	 */
 	public int getPuntuacion() {
 		return puntuacion;
-	}
-
-	public void setPuntuacion(int puntuacion) {
-		this.puntuacion = puntuacion;
 	}
 }

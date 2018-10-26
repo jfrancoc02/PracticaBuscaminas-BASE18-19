@@ -174,6 +174,23 @@ public class VentanaPrincipal {
 				});
 			}
 		}
+		
+		botonEmpezar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				pantallaPuntuacion.setText("0");
+				// Me cargo todo el panel y lo inicio todo de nuevo
+				panelJuego.removeAll();
+				// Genero los botones
+				generarBotones();
+				refrescarPantalla();
+				// Vuelvo a generar las minas y los 0
+				juego.inicializarPartida();
+				// Inicializo los listeners
+				inicializarListeners();
+			}
+		});
 	}
 
 	/**
@@ -234,9 +251,6 @@ public class VentanaPrincipal {
 				JOptionPane.YES_NO_OPTION);
 		// Si el usuario pulsa "SI" se vuelve a generar un nuevo buscaminas
 		if (opcion == 0) {
-			// Ponemos la puntuacion a 0
-			// Para ello me he creado un metodo setPuntuacion() en la clase ControlJuego.java
-			juego.setPuntuacion(0);
 			// Me cargo todo el panel y lo inicio todo de nuevo
 			panelJuego.removeAll();
 			// Genero los botones
