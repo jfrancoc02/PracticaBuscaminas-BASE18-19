@@ -125,10 +125,10 @@ public class VentanaPrincipal {
 		 * panelPuntuacion.add(pantallaPuntuacion);
 		 */
 
-		nuevoBuscaminas();
+		generarBotones();
 	}
 
-	public void nuevoBuscaminas() {
+	public void generarBotones() {
 		// Paneles
 		panelesJuego = new JPanel[10][10];
 		for (int i = 0; i < panelesJuego.length; i++) {
@@ -234,11 +234,13 @@ public class VentanaPrincipal {
 				JOptionPane.YES_NO_OPTION);
 		// Si el usuario pulsa "SI" se vuelve a generar un nuevo buscaminas
 		if (opcion == 0) {
-			actualizarPuntuacion();
+			// Ponemos la puntuacion a 0
+			// Para ello me he creado un metodo setPuntuacion() en la clase ControlJuego.java
+			juego.setPuntuacion(0);
 			// Me cargo todo el panel y lo inicio todo de nuevo
 			panelJuego.removeAll();
 			// Genero los botones
-			nuevoBuscaminas();
+			generarBotones();
 			refrescarPantalla();
 			// Vuelvo a generar las minas y los 0
 			juego.inicializarPartida();
@@ -259,7 +261,6 @@ public class VentanaPrincipal {
 		if (juego.getPuntuacion() == 80) {
 			mostrarFinJuego(false);
 		}
-
 	}
 
 	/**
