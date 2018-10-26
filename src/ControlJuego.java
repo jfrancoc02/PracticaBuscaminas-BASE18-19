@@ -187,5 +187,4 @@ public class ControlJuego {
 	public int getPuntuacion() {
 		return this.puntuacion;
 	}
-
 }
