@@ -13,6 +13,19 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+/**
+ * Clase que genera y gestiona la ventana y todos sus componentes
+ * {@link #inicializar()}
+ * {@code ventana.setVisible(true);
+		inicializarComponentes();
+		inicializarListeners();}
+ * @author jonathanFrancoClemente
+ * @version 1.1
+ * @since 26/10/2018
+ * @see ControlJuego
+ */
+
+
 public class VentanaPrincipal {
 
 	// La ventana principal, en este caso, guarda todos los componentes:
